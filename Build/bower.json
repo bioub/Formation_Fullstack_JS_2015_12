@@ -1,0 +1,23 @@
+{
+  "name": "Build",
+  "main": "src/index.html",
+  "homepage": "https://github.com/bioub/Formation_Fullstack_JS_2015_12",
+  "authors": [
+    "bioub <romain.bohdanowicz@gmail.com>"
+  ],
+  "description": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~1.11",
+    "bootstrap": "~3.3.6"
+  }
+}

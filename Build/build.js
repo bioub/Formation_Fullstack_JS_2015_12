@@ -19,21 +19,27 @@ var fichiers = fs.readdirSync(srcPath);
 for (var i=0; i<fichiers.length; i++) {
     var fichier = fichiers[i];
     var src = path.join(srcPath, fichier);
-    var dest = path.join(distPath, fichier);
-    var contenu = fs.readFileSync(src);
+    var stats = fs.statSync(src);
 
-    if (fichier.endsWith('.html')) {
-        contenu = contenu.toString();
-        contenu = contenu.replace('jquery-1.11.3.js',
-            '//code.jquery.com/jquery-1.11.3.min.js');
-        // transformer
-        // jquery-1.11.3.js
-        // en
-        // //code.jquery.com/jquery-1.11.3.min.js
+    if (stats.isFile()) {
+
+
+        var dest = path.join(distPath, fichier);
+        var contenu = fs.readFileSync(src);
+
+        if (fichier.endsWith('.html')) {
+            contenu = contenu.toString();
+            contenu = contenu.replace('bower_components/jquery/dist/jquery.js',
+                '//code.jquery.com/jquery-1.11.3.min.js');
+            // transformer
+            // jquery-1.11.3.js
+            // en
+            // //code.jquery.com/jquery-1.11.3.min.js
+        }
+
+
+        fs.writeFileSync(dest, contenu);
     }
-
-
-    fs.writeFileSync(dest, contenu);
 }
 
 console.timeEnd('Build');
