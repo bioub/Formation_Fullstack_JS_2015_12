@@ -30,6 +30,12 @@
     console.log(addition('2', '3'));
     console.log(addition(2, 3, 4));
     console.log(addition(2));
+    try {
+        addition();
+    }
+    catch (e) {
+        console.error(e.message);
+    }
 
 // function expression
     var addition = function(nb1, nb2) {

@@ -59,9 +59,9 @@ Contact.coucou = function() {
 
 var romain = new Contact('Romain', 'Bohdanowicz');
 console.log(Contact.coucou.call(romain));
-console.log(romain.prenom);
-console.log(romain.nom);
-console.log(romain.hello());
+console.log(romain.prenom); // Romain
+console.log(romain.nom); // undefined
+console.log(romain.hello()); // accès à nom
 console.log(romain.sePresenter());
 console.log(romain.hasOwnProperty('prenom'));
 console.log(typeof romain);

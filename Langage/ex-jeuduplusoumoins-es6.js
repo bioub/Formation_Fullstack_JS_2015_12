@@ -19,8 +19,8 @@ const readline = require('readline');
 class Jeu {
     constructor(options) {
         options = options || {};
-        var min = options.min || 0;
-        var max = options.max || 100;
+        let min = options.min || 0;
+        let max = options.max || 100;
 
         this.entierAlea = Math.floor(Math.random() * (max - min + 1)) + min;
         this.rl = readline.createInterface({
@@ -38,7 +38,7 @@ class Jeu {
         this.rl.question("Quel est le nombre? ", (answer) => {
             var nbSaisi = Number(answer);
 
-            if (isNaN(nbSaisi)) {
+            if (Number.isNaN(nbSaisi)) {
                 console.error('Il faut saisir un nombre');
                 return this.jouer();
             }
@@ -61,5 +61,5 @@ class Jeu {
     }
 }
 
-let jeu = new Jeu({question: 'Quel est le nombre'});
+let jeu = new Jeu();
 jeu.jouer();
