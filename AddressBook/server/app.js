@@ -18,7 +18,8 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
     res.status(500);
     res.json({
-        message: 'Error 500'
+        message: 'Error 500',
+        error: err
     });
 });
 

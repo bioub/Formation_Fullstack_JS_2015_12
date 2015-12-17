@@ -1,5 +1,6 @@
 'use strict';
 const express = require('express');
+var Contact = require('../models/contact');
 
 let routes = express.Router();
 
@@ -20,32 +21,48 @@ let contacts = [{
 // list
 // GET /api/v1/contacts
 routes.get('/', function(req, res, next) {
-    res.json(contacts);
+
+    Contact.find(function (err, contacts) {
+        if (err) {
+            return next(err);
+        }
+        res.json(contacts);
+    });
 });
 
 // show
 // GET /api/v1/contacts/123
 routes.get('/:id', function(req, res, next) {
-    var id = Number(req.params.id);
+    var id = req.params.id;
 
-    var contact = contacts.find((elt) => id === elt.id);
+    Contact.findOne({_id: id}, function (err, contact) {
+        if (err) {
+            return next(err);
+        }
 
-    if (!contact) {
-        // appel du middleware suivant (ici erreur 404)
-        return next();
-    }
+        if (!contact) {
+            // appel du middleware suivant (ici erreur 404)
+            return next();
+        }
 
-    res.json(contact);
+        res.json(contact);
+    });
+
+
 });
 
 // add
 // POST /api/v1/contacts
 routes.post('/', function(req, res, next) {
-    var contact = req.body;
+    var contact = new Contact(req.body);
 
-
-
-    res.json(contact);
+    contact.save(function(err, contact) {
+        if (err) {
+            next(err);
+        }
+        res.status(201);
+        res.json(contact);
+    });
 });
 
 // update
