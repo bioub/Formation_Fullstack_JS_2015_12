@@ -1,0 +1,21 @@
+{
+  "name": "AngularJS",
+  "homepage": "https://github.com/bioub/Formation_Fullstack_JS_2015_12",
+  "authors": [
+    "bioub <romain.bohdanowicz@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8"
+  }
+}

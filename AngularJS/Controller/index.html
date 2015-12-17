@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-controller="ContactController">
+    <div>
+        Prénom : <input ng-model="prenom"> <button ng-click="ajouter()">Ajouter</button>
+    </div>
+    <ul>
+        <li ng-repeat="prenom in prenoms track by $index">
+            {{prenom}}
+            <span ng-if="$last">dernier</span>
+        </li>
+    </ul>
+</body>
+</html>
