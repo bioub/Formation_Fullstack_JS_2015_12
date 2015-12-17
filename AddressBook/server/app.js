@@ -2,9 +2,11 @@
 const express = require('express');
 const contacts = require('./routes/contacts');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 let app = express();
 
+app.use(express.static(path.join(__dirname, '..', 'client')));
 app.use(bodyParser.json());
 app.use('/api/v1/contacts', contacts);
 
