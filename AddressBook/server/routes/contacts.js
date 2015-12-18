@@ -4,20 +4,6 @@ var Contact = require('../models/contact');
 
 let routes = express.Router();
 
-let nextId = 3;
-
-let contacts = [{
-    id: 1,
-    prenom: 'Bill',
-    nom: 'Gates',
-    email: 'bgates@microsoft.com'
-},{
-    id: 2,
-    prenom: 'Steve',
-    nom: 'Jobs',
-    tel: '+1 1254 1542 1551'
-}];
-
 // list
 // GET /api/v1/contacts
 routes.get('/', function(req, res, next) {
@@ -73,9 +59,18 @@ routes.post('/:id', function(req, res, next) {
 });
 
 // delete
-// DELETE /api/v1/contacts/123
+// DELETE /api/v1/contacts/556sdf5656ger5665gd5
 routes.delete('/:id', function(req, res, next) {
+    var id = req.params.id;
 
+    Contact.findByIdAndRemove(id, function(err, contact) {
+        if (err) {
+            return next(err);
+        }
+
+        res.status(204);
+        res.end();
+    });
 });
 
 //export default routes;
